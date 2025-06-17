@@ -25,7 +25,7 @@ export default function CounterOne() {
   return (
     <div
       ref={dragRef}
-      className={`w-16 h-16 rounded-full bg-blue-500 cursor-grab ${isDragging ? "opacity-50" : "opacity-100"}`}
+      className={`w-16 h-16 rounded-full border-white border-2 bg-blue-500 cursor-grab ${isDragging ? "opacity-50" : "opacity-100"}`}
     ></div>
   );
 }

@@ -25,7 +25,7 @@ export default function CounterTwo() {
   return (
     <div
       ref={dragRef}
-      className={`w-16 h-16 rounded-full bg-red-500 cursor-grab ${isDragging ? "opacity-50" : "opacity-100"}`}
+      className={`w-16 h-16 rounded-full border border-white border-2 bg-red-500 cursor-grab ${isDragging ? "opacity-50" : "opacity-100"}`}
     ></div>
   );
 }

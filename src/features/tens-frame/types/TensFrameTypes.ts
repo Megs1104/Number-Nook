@@ -10,3 +10,10 @@ export interface DragItem {
   type: TensFrameType;
   color: string;
 }
+
+export type TensFrameContext = {
+  totalBlue: number;
+  setTotalBlue: (totalBlue: number) => void;
+  totalRed: number;
+  setTotalRed: (totalRed: number) => void;
+};

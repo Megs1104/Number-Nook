@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 export const TensFrameTypes = {
   COUNTER: "counter",
 } as const;
@@ -13,7 +15,7 @@ export interface DragItem {
 
 export type TensFrameContext = {
   totalBlue: number;
-  setTotalBlue: (totalBlue: number) => void;
+  setTotalBlue: Dispatch<SetStateAction<number>>;
   totalRed: number;
-  setTotalRed: (totalRed: number) => void;
+  setTotalRed: Dispatch<SetStateAction<number>>;
 };

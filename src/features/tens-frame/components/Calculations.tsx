@@ -10,13 +10,11 @@ export default function Calculations() {
   return (
     <div>
       <div className="text-center m-2">
-        <button className="bg-white rounded p-2" onClick={handleClick}>
-          Show Calculations
-        </button>
+        <button onClick={handleClick}>Show Calculations</button>
       </div>
 
       {showCalculations && (
-        <div className="text-white text-xl text-center">
+        <div className="text-xl text-center">
           <p>
             {totalBlue} + {totalRed} = {totalBlue + totalRed}
           </p>

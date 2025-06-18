@@ -1,5 +1,15 @@
 @import "tailwindcss";
-
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 @theme {
   --color-darkGreen: #6d6927;
+  --color-lightGreen: #adc170;
+  --font-comic: "Comic Neue", sans-serif;
+}
+
+body {
+  @apply font-comic text-lightGreen font-bold;
+}
+
+button {
+  @apply bg-lightGreen text-white rounded p-2;
 }

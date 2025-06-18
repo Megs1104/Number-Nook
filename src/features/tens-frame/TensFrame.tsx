@@ -8,23 +8,21 @@ import NavBar from "../navigation/NavBar";
 
 export default function TensFrame() {
   return (
-    <div className="relative flex items-center justify-center">
-      <div className="overflow-auto">
-        <NavBar />
-        <p className="text-center text-white text-xl mb-2">Tens Frame</p>
-        <DndProvider backend={HTML5Backend}>
-          <div className="flex flex-col items-center justify-center flex-grow gap-12">
-            <div className="flex gap-8 mt-2">
-              <CounterOne />
-              <CounterTwo />
-            </div>
-            <div>
-              <Frame />
-            </div>
-            <Calculations />
+    <div className="w-full">
+      <NavBar />
+      <p className="text-center text-3xl">Tens Frame</p>
+      <DndProvider backend={HTML5Backend}>
+        <div>
+          <div className="flex gap-8 justify-center mt-4 mb-4">
+            <CounterOne />
+            <CounterTwo />
           </div>
-        </DndProvider>
-      </div>
+          <div className="w-full justify-center flex">
+            <Frame />
+          </div>
+          <Calculations />
+        </div>
+      </DndProvider>
     </div>
   );
 }

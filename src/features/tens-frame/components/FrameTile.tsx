@@ -1,24 +1,26 @@
 import { useDrop } from "react-dnd";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { TensFrameTypes } from "../types/TensFrameTypes";
 import type { DragItem } from "../types/TensFrameTypes";
 import { useTensFrameContext } from "../contexts/TensFrameContext";
 
 export default function FrameTile() {
   const [counterColor, setCounterColor] = useState<string | null>(null);
+  const hasCounterRef = useRef(false);
   const { totalBlue, setTotalBlue, setTotalRed } = useTensFrameContext();
   const [{ isOver }, drop] = useDrop<DragItem, void, { isOver: boolean }>(
     () => ({
       accept: TensFrameTypes.COUNTER,
+      canDrop: () => !hasCounterRef.current,
       drop: (item) => {
-        console.log(item.color);
+        if (hasCounterRef.current) return;
+        hasCounterRef.current = true;
         setCounterColor(item.color);
         if (item.color === "bg-blue-500") {
           setTotalBlue((prev: number) => {
             const updated = prev + 1;
             return updated;
           });
-          console.log(totalBlue);
         } else {
           setTotalRed((prev: number) => {
             const updated = prev + 1;
@@ -33,12 +35,12 @@ export default function FrameTile() {
   );
 
   function toggleCounter(counterColor: string | null) {
+    if (counterColor === null) return;
     if (counterColor === "bg-blue-500") {
       setTotalBlue((prev: number) => {
         const updated = prev - 1;
         return updated;
       });
-      console.log(totalBlue);
     } else {
       setTotalRed((prev: number) => {
         const updated = prev - 1;
@@ -46,6 +48,7 @@ export default function FrameTile() {
       });
     }
     setCounterColor(null);
+    hasCounterRef.current = false;
   }
   const setRef = useCallback(
     (node: HTMLDivElement | null) => {

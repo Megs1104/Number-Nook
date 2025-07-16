@@ -1,4 +1,9 @@
-export default function NumberLine({ min, max }) {
+type NumberLineProps = {
+  min: number;
+  max: number;
+};
+
+export default function NumberLine({ min, max }: NumberLineProps) {
   const nums = [];
   for (let i = min; i <= max; i++) {
     nums.push(i);

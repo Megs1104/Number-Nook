@@ -7,7 +7,7 @@ import { useTensFrameContext } from "../contexts/TensFrameContext";
 export default function FrameTile() {
   const [counterColor, setCounterColor] = useState<string | null>(null);
   const hasCounterRef = useRef(false);
-  const { totalBlue, setTotalBlue, setTotalRed } = useTensFrameContext();
+  const { setTotalBlue, setTotalRed } = useTensFrameContext();
   const [{ isOver }, drop] = useDrop<DragItem, void, { isOver: boolean }>(
     () => ({
       accept: TensFrameTypes.COUNTER,

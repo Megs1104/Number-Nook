@@ -3,6 +3,8 @@ import { Homepage } from "./features/home/Homepage";
 import brownPaper from "./assets/brown-paper.jpg";
 import { Route, Routes } from "react-router-dom";
 import TensFrame from "./features/tens-frame/TensFrame";
+import NumberLineToTen from "./features/number-line-to-ten/NumberLineToTen";
+import NumberLineToTwenty from "./features/number-line-to-twenty/NumberLineToTwenty";
 
 function App() {
   return (
@@ -17,6 +19,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/tens-frame" element={<TensFrame />} />
+            <Route path="/number-line-to-ten" element={<NumberLineToTen />} />
+            <Route
+              path="/number-line-to-twenty"
+              element={<NumberLineToTwenty />}
+            />
           </Routes>
         </div>
       </div>

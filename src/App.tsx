@@ -3,8 +3,8 @@ import { Homepage } from "./features/home/Homepage";
 import brownPaper from "./assets/brown-paper.jpg";
 import { Route, Routes } from "react-router-dom";
 import TensFrame from "./features/tens-frame/TensFrame";
-import NumberLineToTen from "./features/number-line-to-ten/NumberLineToTen";
-import NumberLineToTwenty from "./features/number-line-to-twenty/NumberLineToTwenty";
+import NumberLineToTen from "./features/number-lines/NumberLineToTen";
+import NumberLineToTwenty from "./features/number-lines/NumberLineToTwenty";
 import { DndProvider } from "react-dnd";
 import { TouchBackend } from "react-dnd-touch-backend";
 function App() {

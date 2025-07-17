@@ -1,4 +1,4 @@
-import NumberLine from "../home/components/number-line/NumberLine";
+import NumberLine from "./components/NumberLine";
 import NavBar from "../navigation/NavBar";
 
 export default function NumberLineToTwenty() {

@@ -1,16 +1,16 @@
 import { useDrop } from "react-dnd";
 import { ItemTypes, type DragNumber } from "../types";
-export default function Circle({
-  number,
-  setNumber,
-}: {
+
+interface CircleProps {
   number: number | null;
   setNumber: (n: number | null) => void;
-}) {
+}
+
+export default function Circle({ number, setNumber }: CircleProps) {
   const [{ isOver }, drop] = useDrop<DragNumber, void, { isOver: boolean }>(
     () => ({
       accept: ItemTypes.NUMBER,
-      drop: (item) => {
+      drop: (item: DragNumber) => {
         console.log(item);
         setNumber(item.value);
       },
@@ -21,7 +21,7 @@ export default function Circle({
   );
   return (
     <div
-      ref={drop}
+      ref={drop as unknown as React.Ref<HTMLDivElement>}
       onClick={() => setNumber(null)}
       className={`w-24 h-24 rounded-full border-4 flex items-center justify-center flex-col text-center ${isOver ? "bg-green-100" : "bg-white"}`}
     >

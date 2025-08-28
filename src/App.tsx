@@ -6,23 +6,33 @@ import TensFrame from "./features/tens-frame/TensFrame";
 import NumberLineToTen from "./features/number-lines/NumberLineToTen";
 import NumberLineToTwenty from "./features/number-lines/NumberLineToTwenty";
 import PartWholeModel from "./features/part-whole-model/PartWholeModel";
-import { MultiBackend } from "react-dnd-multi-backend";
-import { DndProvider as MultiDndProvider } from "react-dnd-multi-backend";
+import {
+  HTML5DragTransition,
+  MultiBackend,
+  TouchTransition,
+  type MultiBackendOptions,
+  type MultiBackendPipeline,
+} from "react-dnd-multi-backend";
+import { DndProvider as MultiDndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 function App() {
-  const HTML5toTouch = {
+  const HTML5toTouch: MultiBackendOptions = {
     backends: [
-      { backend: HTML5Backend, preview: true },
       {
+        backend: HTML5Backend,
+        preview: true,
+        id: "html5",
+        transition: HTML5DragTransition,
+      },
+      {
+        id: "touch",
         backend: TouchBackend,
         options: { enableMouseEvents: true },
         preview: true,
-        transition: (event) => {
-          return event.type === "touchstart";
-        },
+        transition: TouchTransition,
       },
-    ],
+    ] as MultiBackendPipeline,
   };
   return (
     <MultiDndProvider backend={MultiBackend} options={HTML5toTouch}>

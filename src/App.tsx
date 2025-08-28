@@ -5,11 +5,27 @@ import { Route, Routes } from "react-router-dom";
 import TensFrame from "./features/tens-frame/TensFrame";
 import NumberLineToTen from "./features/number-lines/NumberLineToTen";
 import NumberLineToTwenty from "./features/number-lines/NumberLineToTwenty";
-import { DndProvider } from "react-dnd";
+import PartWholeModel from "./features/part-whole-model/PartWholeModel";
+import { MultiBackend } from "react-dnd-multi-backend";
+import { DndProvider as MultiDndProvider } from "react-dnd-multi-backend";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 function App() {
+  const HTML5toTouch = {
+    backends: [
+      { backend: HTML5Backend, preview: true },
+      {
+        backend: TouchBackend,
+        options: { enableMouseEvents: true },
+        preview: true,
+        transition: (event) => {
+          return event.type === "touchstart";
+        },
+      },
+    ],
+  };
   return (
-    <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
+    <MultiDndProvider backend={MultiBackend} options={HTML5toTouch}>
       <div className="relative min-h-screen w-screen">
         <img
           src={brownPaper}
@@ -26,11 +42,12 @@ function App() {
                 path="/number-line-to-twenty"
                 element={<NumberLineToTwenty />}
               />
+              <Route path="/part-whole-model" element={<PartWholeModel />} />
             </Routes>
           </div>
         </div>
       </div>
-    </DndProvider>
+    </MultiDndProvider>
   );
 }
 

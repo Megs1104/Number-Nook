@@ -42,6 +42,11 @@ export default function NavOptions() {
           </button>
         </Link>
       </div>
+      <div className="p-2">
+        <Link to="/part-whole-model">
+          <button>Part Whole Model</button>
+        </Link>
+      </div>
     </div>
   );
 }
